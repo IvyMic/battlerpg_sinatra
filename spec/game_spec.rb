@@ -15,4 +15,21 @@ describe Game do
       subject.attack(player2)
     end
   end
+
+  describe '#switch_players' do
+    it 'changes the active player' do
+      subject.switch_players
+      expect(subject.active_player).to eql(player2)
+    end    
+  end
+
+  describe '#inactive_player' do
+    it 'returns the inactive player' do
+      expect(subject.inactive_player).to eq(player2)
+    end
+    
+    it 'works after switching' do
+      expect { subject.switch_players }.to change { subject.inactive_player }.to (player1)
+    end
+  end
 end

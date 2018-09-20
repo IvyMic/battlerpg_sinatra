@@ -1,5 +1,7 @@
-<p><%= @player1.name %> vs. <%= @player2.name %></p>
-<p><%= @player2.name %>: <%= @player2.hp %>HP</p>
+<h1><%= @active_player.name %>'s turn</h1>
+<p><%= @active_player.name %> vs. <%= @inactive_player.name %></p>
+<p><%= @active_player.name %>: <%= @active_player.hp %>HP</p>
+<p><%= @inactive_player.name %>: <%= @inactive_player.hp %>HP</p>
 
 <form action="/attack">
 	<button type="submit" value="attack">Attack!</button>
