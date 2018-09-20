@@ -28,4 +28,11 @@ describe Game do
       expect { subject.switch_players }.to change { subject.inactive_player }.to (player1)
     end
   end
+
+  describe '#game_over' do
+    it "returns true when active player's hp is 0 or less" do
+      allow(player2).to receive(:hp).and_return(0)
+      expect(subject.game_over?).to eql(true)
+    end
+  end
 end

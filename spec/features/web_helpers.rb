@@ -7,5 +7,5 @@ end
 
 def attack_and_confirm
   click_button('attack')
-  click_link('End Turn')
+  click_button('End Turn')
 end

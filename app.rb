@@ -16,23 +16,28 @@ class Battle < Sinatra::Application
   end
 
   get '/play' do
-    # @player1 = $game.player1
-    # @player2 = $game.player2
     @active_player = $game.active_player
     @inactive_player = $game.inactive_player
     erb(:play)
   end
 
   get '/attack' do
-    # @player1 = $game.player1
-    # @player2 = $game.player2
     @active_player = $game.active_player
     @inactive_player = $game.inactive_player
     $game.attack(@inactive_player)
-    $game.switch_players
+    redirect '/game_over' if $game.game_over?
     erb(:attack)
   end
 
+  post '/switch_players' do
+    $game.switch_players
+    redirect '/play'
+  end
+
+  get "/game_over" do
+    @inactive_player = $game.inactive_player 
+    erb(:game_over)
+  end
   
   # start the server if ruby file executed directly
   run! if app_file == $0

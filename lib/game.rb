@@ -16,4 +16,8 @@ class Game
     @active_player = @inactive_player
     @inactive_player = @inactive_player == @player1 ? @player2 : @player1
    end
+
+   def game_over?
+    @inactive_player.hp <= 0
+   end
 end
